@@ -5,7 +5,7 @@ import { getSummaryAction } from "./get-summary.actions";
 describe('getSummaryAction', () => {
     test('should fetch summary and return complete information', async () => {
         const response = await getSummaryAction();
-        console.log(response);
+        // console.log(response);
         expect(response.strongestHero.id).toBeDefined();
 
         expect(response).toStrictEqual({

@@ -1,10 +1,10 @@
 import { CustomJumboTron } from "@/components/custom/CustomJumboTron";
-import { HeroStats } from "../components/HeroStats";
+import { HeroStats } from "../../components/HeroStats";
 import { SearchControls } from "./ui/SearchControls";
 import { CustomBreadCrumbs } from "@/components/custom/CustomBreadCrumbs";
 import { useQuery } from "@tanstack/react-query";
-import { searchHerosAction } from "../actions/search-heros.action";
-import { HeroGrid } from "../components/HeroGrid";
+import { searchHerosAction } from "../../actions/search-heros.action";
+import { HeroGrid } from "../../components/HeroGrid";
 import { useSearchParams } from "react-router";
 
 export const SearchPage = () => {

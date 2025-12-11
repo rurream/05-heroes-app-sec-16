@@ -22,7 +22,7 @@ describe('getHero action', () => {
         // expect(hero.image).contain('http');
 
         const response = await getHeroByAliasAction(idSlug);
-        console.log(response);
+        // console.log(response);
         expect(response).toStrictEqual({
             id: '1',
             name: 'Clark Kent',

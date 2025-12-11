@@ -1,7 +1,7 @@
 import { CustomBreadCrumbs } from "@/components/custom/CustomBreadCrumbs"
 import { CustomJumboTron } from "@/components/custom/CustomJumboTron"
 import { useParams } from "react-router"
-import { HeroInfo } from "../components/HeroInfo";
+import { HeroInfo } from "../../components/HeroInfo";
 
 export const HeroPage = () => {
 

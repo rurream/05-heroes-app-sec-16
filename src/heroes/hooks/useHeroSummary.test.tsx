@@ -1,33 +1,17 @@
 
-import type { PropsWithChildren } from 'react';
 import { describe, expect, test, vi } from "vitest";
 import { renderHook, waitFor } from '@testing-library/react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
 import { useHeroSummary } from "./useHeroSummary";
-// import { tanStackCustomProviderMock } from '../../../test/mocks/queryClientProviderMock'
+import { tanStackCustomProviderMock } from '../../../test/mocks/queryClientProviderMock'
 import { getSummaryAction } from '../actions/get-summary.actions';
 import type { SummaryInformationResponse } from '../types/summary-information.response';
 
-vi.mock('../actions/getSummaryAction', () => ({
+vi.mock('../actions/get-summary.actions', () => ({
     getSummaryAction: vi.fn(),
 }));
 const mockGetSummaryAction = vi.mocked(getSummaryAction);
-
-const tanStackCustomProviderMock = () => {
-    const queryClient = new QueryClient({
-        defaultOptions: {
-            queries: {
-                retry: false
-            }
-        }
-    });
-
-    return ({ children }: PropsWithChildren) => (
-        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    )
-}
 
 describe('useHeroSummary', () => {
     test('should return the initial state (isLoading)', () => {
@@ -109,10 +93,8 @@ describe('useHeroSummary', () => {
             },
             heroCount: 20,
             villainCount: 5
-        } as SummaryInformationResponse
-        // beforeEach(() => {
-        //     mockGetSummaryAction.mockResolvedValue();
-        // });
+        } as unknown as SummaryInformationResponse
+
         mockGetSummaryAction.mockResolvedValue(mockSummaryData);
 
         const { result } = renderHook(() => useHeroSummary(), {
@@ -132,15 +114,16 @@ describe('useHeroSummary', () => {
 
         const mockError = new Error('Failed to fetch summary');
         mockGetSummaryAction.mockRejectedValue(mockError);
-        // beforeEach(() => {
-        //     mockGetSummaryAction.mockRejectedValue(mockError);
-        // });
+
         const { result } = renderHook(() => useHeroSummary(), {
             wrapper: tanStackCustomProviderMock()
         });
         await waitFor(() => {
             expect(result.current.isError).toBe(true);
         });
-        console.log(result.current.error);
+        // console.log(result.current.error);
+        expect(result.current.error).toBeDefined();
+        expect(result.current.isLoading).toBe(false);
+        expect(mockGetSummaryAction).toHaveBeenCalled();
     });
 });

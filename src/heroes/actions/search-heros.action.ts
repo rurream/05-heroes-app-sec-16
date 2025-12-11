@@ -37,5 +37,5 @@ export const searchHerosAction = async (options: Options): Promise<Hero[]> => {
             image: `${url}/images/${heroe.image}`
         }
     });
-    return heroes
+    return heroes ?? [];
 }

@@ -45,6 +45,7 @@ const getFavoritesFromLocalStorage = () => {
         return []
     }
     return result.data;
+    // return favorites ? JSON.parse(favorites) : [];
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -74,7 +75,7 @@ export const FavoriteHeroContextProvider = ({ children }: PropsWithChildren) => 
 
     useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites));
-    }, [favorites])
+    }, [favorites,])
 
 
     return (

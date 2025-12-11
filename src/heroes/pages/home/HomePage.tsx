@@ -6,14 +6,14 @@ import { use, useMemo } from "react"
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { CustomJumboTron } from "@/components/custom/CustomJumboTron"
-import { HeroStats } from "../components/HeroStats"
-import { HeroGrid } from "../components/HeroGrid"
+import { HeroStats } from "../../components/HeroStats"
+import { HeroGrid } from "../../components/HeroGrid"
 import { CustomPagination } from "@/components/custom/CustomPagination"
 import { CustomBreadCrumbs } from "@/components/custom/CustomBreadCrumbs"
 
-import { useHeroSummary } from "../hooks/useHeroSummary"
-import { usePaginatedHeroes } from "../hooks/usePaginatedHeroes"
-import { FavoriteHeroContext } from "../context/FovoriteHeroContext"
+import { useHeroSummary } from "../../hooks/useHeroSummary"
+import { usePaginatedHeroes } from "../../hooks/usePaginatedHeroes"
+import { FavoriteHeroContext } from "../../context/FovoriteHeroContext"
 
 
 
